@@ -157,6 +157,7 @@ Then call:
 
 CoroutineScope(Dispatchers.IO).launch {
     val result = NsfwDetector.detectNsfwSinglePass(context, bitmap)
+    Log.d("NSFW", "Porn score = ${result.porn}")
 }
 
  The result will be a class NsfwFactors which contains different parameters results for drawing, hentai, neutral, porn, sexy ***(the drawing and neutral are nsfw safe scores and should be added to compute the total safe score)***
