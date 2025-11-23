@@ -35,27 +35,27 @@ The window-based deep scan is optional and mainly useful for detecting localized
 ## 2. Features
 ### Single-Pass Detector
 
-Resizes the input image to 224×224
+- Resizes the input image to 224×224
 
-Converts RGBA → normalized RGB tensor
+- Converts RGBA → normalized RGB tensor
 
-Uses NEON SIMD instructions (vld4q, vmovl, vcvtq) for fast preprocessing
+- Uses NEON SIMD instructions (vld4q, vmovl, vcvtq) for fast preprocessing
 
-Runs the model once (fastest path)
+- Runs the model once (fastest path)
 
-Very low latency, suitable for UI threads if called through coroutines
+**Very low latency, suitable for UI threads if called through coroutines**
 
 ### Deep Scan (Sliding Window)
 
-Divides the image into overlapping 224×224 windows
+- Divides the image into overlapping 224×224 windows
 
-Uses a stride of 112px
+- Uses a stride of 112px
 
-Each window is processed in parallel through a small thread pool
+- Each window is processed in parallel through a small thread pool
 
-Suitable for images with multiple regions or partial NSFW content
+- Suitable for images with multiple regions or partial NSFW content
 
-Significantly heavier than the single pass (not recommended for frequent usage)
+**Significantly heavier than the single pass (not recommended for frequent usage)**
 
 ## 3. Native Pipeline
 
